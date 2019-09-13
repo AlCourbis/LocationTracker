@@ -23,7 +23,7 @@ public class ParametersCollection {
     public static final String DEFAULT_END_TIME = "24:00";
 
     /**Simple date formats used in DailyLocationTracker for database update and address fetching**/
-    public static final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+    public static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
     public static final DateFormat dayTime = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
     /**Tag assimilated to the application's log in order to check Worker's status**/
