@@ -92,7 +92,13 @@ public class DailyLocationTracker extends Worker {
         Log.d(ParametersCollection.LOCATION_SERVICE_TAG, "onStartJob: STARTING JOB..");
 
         /***Instantiate the Shared Preference and get the user ID from it***/
-        prefs = getApplicationContext().getSharedPreferences(ParametersCollection.sharedPrefFile, MODE_PRIVATE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            Context directBootContext = getApplicationContext().createDeviceProtectedStorageContext();
+            prefs = directBootContext.getSharedPreferences(ParametersCollection.sharedPrefFile, MODE_PRIVATE);
+        }
+        else {
+            prefs = getApplicationContext().getSharedPreferences(ParametersCollection.sharedPrefFile, MODE_PRIVATE);
+        }
         ID = prefs.getString("ID", ID);
 
         /**Getting the current day time**/

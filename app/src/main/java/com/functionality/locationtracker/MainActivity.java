@@ -127,7 +127,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         /**Get the shared preferences file by name, declared on ParametersCollection.java, then get saved user ID from it**/
-        mPreferences = getSharedPreferences(ParametersCollection.sharedPrefFile, MODE_PRIVATE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            Context directBootContext = MainActivity.this.createDeviceProtectedStorageContext();
+            mPreferences = directBootContext.getSharedPreferences(ParametersCollection.sharedPrefFile, MODE_PRIVATE);
+        }
+        else {
+            mPreferences = getSharedPreferences(ParametersCollection.sharedPrefFile, MODE_PRIVATE);
+        }
         id = mPreferences.getString("ID", id);
 
         /**UI instantiated here**/
