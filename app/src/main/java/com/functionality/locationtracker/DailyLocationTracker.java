@@ -108,12 +108,14 @@ public class DailyLocationTracker extends Worker {
 
         try {
 
+            Log.d(ParametersCollection.LOCATION_SERVICE_TAG, "IM HERE NOW ! ! !");
+
             /**This app will only get location from 6 AM to 0 AM**/
             Date currentDate = ParametersCollection.dayTime.parse(formattedDate);
             Date startDate = ParametersCollection.dayTime.parse(ParametersCollection.DEFAULT_START_TIME);
             Date endDate = ParametersCollection.dayTime.parse(ParametersCollection.DEFAULT_END_TIME);
 
-            if (currentDate.before(startDate) && currentDate.after(endDate)) {
+            if (currentDate.after(startDate) && currentDate.before(endDate)) {
                 mFusedLocationClient = LocationServices.getFusedLocationProviderClient(mContext);
                 mLocationCallback = new LocationCallback() {
                     @Override
