@@ -28,11 +28,46 @@
         android:layout_height="wrap_content"
         android:text="Term of use" />
 
+
+    <Button
+        android:id="@+id/btn_agree"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="I have read the Terms of Use and give my agreement " />
+
     <TextView
         android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <ImageView
+
+            android:layout_width="97dp"
+            android:layout_height="89dp"
+            android:layout_weight="1"
+            android:src="@drawable/occitanielogo"/>
+
+        <ImageView
+
+            android:layout_width="46dp"
+            android:layout_height="92dp"
+            android:layout_weight="1"
+            android:src="@drawable/mineslogo"/>
+        <ImageView
+
+            android:layout_width="97dp"
+            android:layout_height="89dp"
+            android:layout_weight="1"
+            android:src="@drawable/universitelogo"/>
+
+    </LinearLayout>
 
 </LinearLayout>

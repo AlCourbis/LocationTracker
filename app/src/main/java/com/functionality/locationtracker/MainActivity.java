@@ -1,5 +1,6 @@
 package com.functionality.locationtracker;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -41,9 +42,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText ID;
     private Button btnTracker;
     private Button btnInfo;
+    private Button btnUserAgreement;
+
     private TextView Address;
     private String adr = "";
-    private String id = "NOT_INITIALIZED";
+    private String id = ParametersCollection.IDnotInitialized;
 
     /***Broadcast Receiver that get fetched address from LocationTracker service***/
     private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
@@ -108,7 +111,9 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle(ParametersCollection.TITLE_LEGAL);
         builder.setMessage(ParametersCollection.INFO_LEGAL);
         builder.show();
+
     }
+
 
     /**
      * Main method revoked on application's launch
@@ -139,10 +144,15 @@ public class MainActivity extends AppCompatActivity {
         /**UI instantiated here**/
         Address = findViewById(R.id.address);
         ID = findViewById(R.id.id);
+
         btnTracker = findViewById(R.id.btn_daily);
+        btnTracker.setEnabled(false);
+
         btnInfo = findViewById(R.id.btn_info);
 
-        if (!id.equals("NOT_INITIALIZED"))
+        btnUserAgreement = findViewById(R.id.btn_agree);
+
+        if (!id.equals(ParametersCollection.IDnotInitialized))
             ID.setText(id);
 
         /**Display tooltips before anything else**/
@@ -166,6 +176,10 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor preferencesEditor = mPreferences.edit();
                 preferencesEditor.putString("ID",id);
                 preferencesEditor.apply();
+                if (id.compareTo(ParametersCollection.IDnotInitialized) !=0 && !btnUserAgreement.isEnabled())
+                    btnTracker.setEnabled(true);
+                else
+                    btnTracker.setEnabled(false);
             }
         });
 
@@ -193,6 +207,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 displayTermOfUse();
+            }
+        });
+
+
+        btnUserAgreement.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (id.compareTo(ParametersCollection.IDnotInitialized) !=0)
+                  btnTracker.setEnabled(true);
+                btnUserAgreement.setEnabled(false);
+                btnUserAgreement.setText("Agreement registered");
             }
         });
     }
