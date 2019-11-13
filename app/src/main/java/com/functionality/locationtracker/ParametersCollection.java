@@ -48,7 +48,7 @@ public class ParametersCollection {
             "Thèse en informatique\n" +
             "Doctorante : Marion Kissous\n" +
             "Réalisée sous la direction de Gérard Dray, Sophie Martin, Anne-Lise Courbis et Thomas Lambolais\n"+
-            "Financement : Regin Occitanie\n" +
+            "Financement : Région Occitanie\n" +
             "\n" +
             "Objectif de l’étude \n" +
             "\n" +
