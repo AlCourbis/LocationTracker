@@ -117,7 +117,11 @@ public class ParametersCollection {
             "Thèse en informatique\n" +
             "Doctorante : Marion Kissous\n" +
             "Réalisée sous la direction de Gérard Dray, Sophie Martin, Anne-Lise Courbis et Thomas Lambolais\n"+
+<<<<<<< Updated upstream
 
+=======
+            "Financement : Région Occitanie\n" +
+>>>>>>> Stashed changes
             "Objectif de l’étude \n" +
             "\n" +
             "Ce projet de recherche vise à explorer si les capteurs sensori-moteurs intégrés dans les " +
